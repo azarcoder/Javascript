@@ -1,0 +1,101 @@
+In JavaScript, when a function is called, the arguments can be passed in two ways, either Pass by value or Pass by reference (address). Primitive data types such as string, number, null, undefined, boolean, are passed by value while non-primitive data types such as objects, arrays, and functions are passed by reference in Javascript.
+
+var num1 = 40;
+var num2 = 40;
+numb1 === num2; // true
+
+var string1 = 'Scaler Academy';
+var string2 = 'Scaler Academy';
+string1 === string2; // true
+
+Primitive data types are compared by value. If two values are same then they are strictly equal.
+
+var myArray = [ 'Scaler', 'Academy' ];
+myArray[1] = 'Topics';
+console.log(myArray) // [ 'Scaler', 'Topics' ];
+
+Objects and arrays are not compared by value. That means even if two objects and arrays have the same values and properties or same elements, respectively, they are not strictly equal.
+
+Two objects are strictly equal only if they refer to the same object.
+
+var obj1 = { 
+    'website': 'Scaler Topics',
+    'topic': 'JavaScript'
+    };
+    
+var obj2 = obj1;    
+obj1 === obj2;  // true
+
+Non-primitive values are sometimes also referred to as reference types because instead of values, they are compared by reference.
+
+Note: In JavaScript, primitive values are stored on the stack while non-primitive values are stored in a heap.
+
+Pass by value in JavaScript requires more space as the functions get a copy of the actual content therefore a new variable is created in the memory.
+
+Note: When we use = operator, there is a function call (behind the scenes) where pass by value (or reference) in JavaScript is done.
+
+function multiplication(tmp) {
+    tmp = tmp * 50;
+    return tmp;
+}
+var num = 30;
+var result = multiplication(num);
+console.log(num); // 30
+console.log(result); // 1500
+
+
+Pass by Reference in JavaScript
+
+Unlike pass by value in JavaScript, pass by reference in JavaScript does not create a new space in the memory, instead, we pass the reference/address of the actual parameter which means, the function can access the original value of the variable. Thus, if we change the value of the variable inside the function then the original value also gets changed.
+
+let obj1 = {website: "Scaler Academy"}
+let obj2 = obj1;
+
+console.log(obj1)     // {website: "Scaler Academy"}
+console.log(obj2)     // {website: "Scaler Academy"}
+
+obj1.website = "Scaler Topics"
+
+console.log(obj1)     // {website: "Scaler Topics"}
+console.log(obj2)     // {website: "Scaler Topics"}
+
+when we change (mutate) the value of obj1, then the value of obj2 also gets changed since obj2 is also pointing to the same memory space as obj1 does.
+
+Pass by Reference in Object (with Function)
+
+let originalObj = {
+name: "Scaler Academy",
+rating: 4.5,
+topic: "JavaScript"
+};
+
+function demo(tmpObj) { 
+  tmpObj.rating = 5; 
+  console.log(tmpObj.rating); 
+} 
+
+console.log(originalObj.rating);    // 4.5
+demo(originalObj);             // 5
+console.log(originalObj.rating);    //5
+
+From the above example, we can see that on changing the value tmpObj the value of originalObj also gets changed. The reason for this is that when we call demo and pass the object then, originalObj is passed by its reference so the local parameter tempObj will point to the same object which we defined i.e. the originalObj. 
+
+Pass by Reference in an Array (with Function)
+
+let originalArr = ["Scaler", "Academy","is", "the"];
+
+function pushArray(tmpArr) { 
+  tmpArr.push('best')
+  console.log(tmpArr); 
+} 
+
+console.log(originalArr);    // ["Scaler", "Academy", "is", "the"]
+pushArray(originalArr);      // ["Scaler", "Academy", "is", "the", "best"]
+console.log(originalArr);    // ["Scaler", "Academy", "is", "the", "best"]
+
+When to Use Pass by Value?
+
+As in pass by value in JavaScript, a new copy of the variable is created and any changes made in the new variable are independent of the original variable so it is useful when we want to keep a track of the initial variable and don't want to lose its value.
+When to Use Pass by Reference?
+
+When we are passing arguments of large size it is better to use pass by reference in JavaScript as no separate copy is made in the called function so memory is not wasted, and hence the program is more efficient.
