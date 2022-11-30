@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="">Enter Rows:</label><input type="number" name="" id="row"><br><br>
+    <label for="">Enter Columns:</label> <input type="number" name="" id="col"><br><br>
+    <button onclick="gen()">Create the Table</button>
+    <p id="demo"></p>
+    <script>
+        function gen()
+        {
+            var r=document.getElementById('row').value
+            var c=document.getElementById('col').value
+            let table=''
+            if(r>c)
+                alert("Enter valid order!")
+            else
+            {
+                var k = 1
+                table+="<table border='1' width=300px height=200px bgcolor=yellow>"
+                for(var i=1;i<=r;i++)
+                {   
+                    table+="<tr>"
+                    for(var j=1;j<=c;j++,k++)
+                    {
+                        table+="<td>"+k+"</td>"
+                    }
+                    table+="</tr>"
+                }
+                table+="</table>"
+            }
+            document.getElementById('demo').innerHTML=table
+            // document.getElementById('demo').style='background-color:yellow'
+        }
+    </script>
+</body>
+</html>

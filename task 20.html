@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table
+        {
+            border: 1px solid #333;
+            background-color: #dddddd;
+            font-family: sans-serif;
+        }
+        th
+        {
+            font-size: 22px;
+        }
+        input[type="button"]
+        {
+            width: 100px;
+            border: none;
+            
+        }
+        input[type="text"]
+        {
+            width: 300px;
+            background-color: rgb(175, 175, 175);
+            border-radius: 3px;
+            border: none;
+        }
+        input[type="text"]:focus 
+        {
+            background-color: rgb(99, 98, 98);
+            color: #fff;
+        }
+        .eval
+        {
+            background-color: rgb(206, 184, 60);
+            border: none;
+        }
+        .c
+        {
+            background-color: rgb(172, 50, 50);
+            border: none;
+        }
+        .pm
+        {
+            background-color: rgb(64, 64, 170);
+            color: #fff;
+        }
+        .c:hover
+        {
+            background-color:red;
+            border: none;
+        }
+        .pm:hover
+        {
+            background-color:blue;
+            color: #fff;
+        }
+        .eval:hover
+        {
+            background-color:gold;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th colspan="4">TEQ Calc</th>
+        </tr>
+        <tr>
+            <td colspan="3"><input type="text" name="" id="inp"></td>
+            <td><input type="button" value="C" class="c" onclick="n.clr()"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="1" onclick="n.view(1)" id="result"></td>
+            <td><input type="button" value="2" onclick="n.view(2)"></td>
+            <td><input type="button" value="3" onclick="n.view(3)"></td>
+            <td><input type="button" value="/" class="pm" onclick="view('/')"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="4" onclick="n.view(4)" ></td>
+            <td><input type="button" value="5" onclick="n.view(5)"></td>
+            <td><input type="button" value="6" onclick="n.view(6)"></td>
+            <td><input type="button" value="-" class="pm" onclick="n.view('-')"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="7" onclick="n.view(7)"></td>
+            <td><input type="button" value="8" onclick="n.view(8)"></td>
+            <td><input type="button" value="9" onclick="n.view(9)"></td>
+            <td><input type="button" value="+" class="pm" onclick="n.view('+')"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="." onclick="n.view('.')"></td>
+            <td><input type="button" value="0" onclick="n.view(0)"></td>
+            <td><input type="button" value="=" class="eval" onclick="n.compute()"></td>
+            <td><input type="button" value="*" class="pm" onclick="n.view('*')"></td>
+        </tr>
+    </table>
+    <script>
+        class calculator
+        {
+            
+            view(n)
+            {
+                document.getElementById('inp').value+=n
+            }
+            clr()
+            {
+                document.getElementById('inp').value=''
+            }
+            compute()
+            {
+                var x=document.getElementById('inp').value
+                let y=eval(x)
+                document.getElementById('inp').value=y
+            }
+        }
+        let n= new calculator()
+    </script>
+</body>
+</html>

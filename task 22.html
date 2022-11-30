@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>BOM
+    </h1>
+    <br>
+    <button onclick="fun()">Get</button>
+    <p id="demo"></p>
+    <script>
+        function fun()
+        {
+            var a=document.getElementById("demo")
+            a.innerHTML='Screen width:'+screen.width+'<br>'
+            a.innerHTML+='Screen height:'+screen.height+'<br>'
+            a.innerHTML+='Screen avail width:'+screen.availWidth+'<br>'
+            a.innerHTML+='Screen avail height:'+screen.availHeight+'<br>'
+            a.innerHTML+='color depth:'+screen.colorDepth+'<br>'
+            a.innerHTML+='pixel depth:'+screen.pixelDepth+'<br>'
+        }
+    </script>
+</body>
+</html>

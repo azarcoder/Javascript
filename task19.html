@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form
+        {
+            font-family: sans-serif;
+            border: 2px solid red;
+            width: 30%;
+            margin-left: 35%;
+            padding: 20px;
+        }
+        label[for="name"], label[for="email"], label[for="pass"], label[for="con"]
+        {
+            margin-right: 20%;
+        }
+        input[type="submit"]
+        {
+            margin-left: 35%;
+            background-color: orangered;
+            color:#fff;
+            border: none;
+            filter: drop-shadow(3px 3px 3px #333);
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function validate()
+        {
+            var x = document.getElementsByClassName('inp'), p = document.getElementsByClassName('demo')
+            var i, n = x.length,f=true
+            for(i = 0; i < n; i++){
+                if(x[i].value == ''){
+                    p[i].innerHTML = "***please fill***"
+                    f=false
+                }
+                else{
+                    p[i].innerHTML=""
+                }
+            }
+            return f
+        }
+
+        //     var p=document.getElementById('name')
+        //     var e=document.getElementById('email')
+        //     var pa=document.getElementById('pass')
+        //     var rp=document.getElementById('repass')
+        //     var c=document.getElementById('con')
+        //     p.innerHTML=''
+        //     var ph=/^\d{10}$/
+        //     var con=document.getElementById("con").value
+            
+        // if(document.myform.name.value==''){
+        //     p.innerHTML='name must be fill out'
+        //     document.myform.name.focus()
+        //     p.style.color='orange'
+        //     return false
+        // }
+        // else if(document.myform.Email.value=='')
+        // {
+        //     e.innerHTML='email must be fill out'
+        //     document.myform.Email.focus()
+        //     e.style.color='orange'
+        //     return false
+        // }
+        // else if(document.myform.pass.value=='')
+        // {
+        //     pa.innerHTML='password must be fill out'
+        //     document.myform.pass.focus()
+        //     pa.style.color='orange'
+        //     return false
+        // }
+        // else if(document.myform.re_pass.value=='')
+        // {
+        //     rp.innerHTML='Confirm password must be fill out'
+        //     document.myform.re_pass.focus()
+        //     rp.style.color='orange'
+        //     return false
+        // }
+        // else if(document.myform.contact.value=='')
+        // {
+        //     c.innerHTML='contact must be fill out'
+        //     document.myform.contact.focus()
+        //     c.style.color='orange'
+        //     return false
+        // }
+        // else
+        //     return true
+        // if(ph.text(con))
+        //         return true
+        //     else
+        //     {
+        //         alert("contact is wrong!")
+        //         return false
+        //     }
+        
+    </script>
+    <form action=""  name="myform">
+        <label for="name">Name</label>
+        <input type="text" name="name"id="name" class="inp" ><br><br>
+        <p id="name" class="demo"></p>
+        <label for="email">Email</label>
+        <input type="email" name="Email" id="email" class="inp"><br><br>
+        <p id="email" class="demo"></p>
+        <label for="pass">Password</label>
+        <input type="password" name="pass"  class="inp"><br><br>
+        <p id="pass" class="demo"></p>
+        <label for="pass">Re-Enter</label>
+        <input type="password" name="re_pass"  class="inp"><br><br>
+        <p id="repass" class="demo"></p>
+        <label for="con">Contact</label>
+        <input type="text" name="contact"  class="inp">
+        <p id="con" class="demo"></p>
+        <br><br>
+        <input type="submit" onclick="return validate()" value="Submit" id="con"  class="inp">
+    </form>
+    
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Palindrome checking</h1>
+    <input type="text" id="txt">
+    <button onclick="pali()">Answer</button>
+    <p id="para"></p>
+    <script>
+        function pali()
+        {
+            let txt=document.getElementById('txt').value.toLocaleLowerCase()
+            let ans=document.getElementById('para')
+            ans.innerHTML=''
+            var s="",t=""
+            for(var i in txt)
+                s+=txt[i]
+            for(var i=s.length-1;i>=0;i--)
+                t+=s[i]
+            
+            if(txt==t.toLowerCase())
+            {
+            ans.innerHTML='YES'
+            ans.style.border='2px solid blue'
+            }
+            else
+            {
+            ans.innerHTML="NO"
+            ans.style.border='2px solid red'
+            }
+        }
+    </script>
+</body>
+</html>
