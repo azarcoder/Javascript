@@ -40,3 +40,5 @@ for(i of n.keys())
 //key value 
 for([k,v] of n)
   console.log(k+"-->"+v)
+//size
+console.log(n.size)
