@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: gray;
+        }
+        #box
+        {
+            background-color: black;
+            width: 400px;
+            height: 200px;
+            margin: 0 auto;
+            filter: drop-shadow(3px 3px 3px #fff);
+        }
+        select,button
+        {
+            width: 90%;
+            margin-left: 18px;
+            background-color: gray;
+            color: #fff;
+        }
+        input[type='text']
+        {
+            margin-left: 28%;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <select id="dropdown"></select>
+        <br><br>
+        <input type="text" id="inp" placeholder="enter data to add">
+        <br><br>
+        <button>click to add item</button>
+    </div>
+    <script src="drop.js"></script>
+</body>
+</html>
