@@ -1,0 +1,21 @@
+getAttribute
+setAttribute
+removeAttribute
+
+parentElement
+parentNode
+
+doucumentElement - returns parent html tag
+
+childNodes
+firstChild
+lastChild
+
+children
+firstElementChild
+lastElementChild
+
+previousSibling
+nextSibling
+previousElementSibling
+nextElementSibling
