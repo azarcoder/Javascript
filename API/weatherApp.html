@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #search
+        {
+            width: 50%;
+            margin: 0 auto;
+            display: flex;
+            column-gap: 12px;
+            border: 1px solied red;
+        }
+        #getWeather
+        {
+            background-color: rgb(54, 237, 54);
+            color: #fff;
+            border: none;
+            width: 100px;
+            font-weight: 900;
+        }
+        #weather
+        {
+            background: rgb(34,193,195);
+            background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%); 
+            width: 50%;
+            margin: 0 auto;
+            margin-top: 12px;
+            text-align: center;
+            font-family: sans-serif;
+            padding: 5px;
+            border-radius: 10px;
+            
+        }
+    </style>
+</head>
+<body>
+    <div id="search">
+        <input type="text" id="city">
+        <button id="getWeather">Get Weather</button>
+    </div>
+    <div id="weather"></div>
+    <script>
+
+        let mydiv = document.getElementById("weather");
+
+        async function getWeather(city)
+        {
+            const apiKey = 'ad999324d13a47931c3a0981e09c8316';
+            const apiUrl = 'https://api.openweathermap.org/data/2.5/weather??units=metric&q=' + city;
+            try
+            {
+                let weatherObj = await fetch(apiUrl + `&appid=${apiKey}`);
+                let response = await weatherObj.json();
+                console.log(response);
+
+                if(response.cod == 404)
+                {
+                    throw Error(response.message);
+                }
+
+                let city = document.createElement("h1");
+                city.textContent = response.name; //we should do like this only
+
+                let temp = document.createElement("h1");
+                temp.innerHTML = `${(response.main.temp - 273.15).toFixed(1)}&deg;C`;
+
+                let humidity = document.createElement("h3");
+                humidity.textContent = `Humidity : ${response.main.humidity}%`;
+
+                let cloud = document.createElement("h3");
+                cloud.textContent = response.weather[0].description;
+
+                mydiv.appendChild(city);
+                mydiv.appendChild(temp);
+                mydiv.appendChild(humidity);
+                mydiv.appendChild(cloud);
+            }
+            catch(err)
+            {
+                let result = document.createElement("h1");
+                result.textContent = err.message;
+                mydiv.appendChild(result);
+            }
+        }
+        
+        document.querySelector("#getWeather").addEventListener("click",()=>{
+            mydiv.innerHTML='';
+            let city = document.getElementById("city").value;
+            getWeather(city);
+        })
+        
+    </script>
+</body>
+</html>

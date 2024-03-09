@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*vignette effect*/
+        body::before 
+        {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(ellipse at center, rgba(0,0,0,0) 50%, rgba(0,0,0,0.8) 100%);
+            pointer-events: none; /* Ensure the pseudo-element doesn't interfere with mouse events */
+        }
+
+        body 
+        {
+            background: url('img/advice_bg.jpg') no-repeat center fixed;
+            background-size: cover;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(10px);
+        
+        }
+
+        p
+        {
+            font-size: 22px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+button:hover {
+    background-color: #219653;
+}
+
+    </style>
+</head>
+<body>
+    <!-- <button onclick="generateAdvice()">Click me and I will Advice for you :)</button> -->
+    <p id="advice"></p>
+    <script>
+        async function handlePromise(number)
+        {
+            try
+            {
+                var data = await fetch(`https://api.adviceslip.com/advice/${number}`)
+                var jsonValue = await data.json()
+                // console.log(jsonValue["slip"].advice)
+                document.getElementById("advice").innerHTML = jsonValue["slip"].advice
+            }
+            catch(err)
+            {
+                alert(err.message)
+            }
+
+        }
+        function generateAdvice()
+        {
+            let randomNumber = Math.floor((Math.random() * 214) + 1)
+            handlePromise(randomNumber)
+            
+        }
+        setInterval(generateAdvice,5000)
+    </script>
+</body>
+</html>
